@@ -6,7 +6,7 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 as an example.
 2. Create a user who will have access to the service. (e.g: aem)
 
 ## Step-by-step guide
-1. You will root access 
+1. You will need root access 
 2. Download these 2 files
    * aem
    * aem.service
@@ -19,6 +19,13 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 as an example.
    * Copy `aem.service` to `/etc/system.d/system/aem.system`
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/etc/system.d/system/aem.system`
 5. SSH to your server
+   * `ssh user@1.1.1.1`
+6. Give permissions to the files
+   * `sudo chmod u+rwx /usr/bin/aem`
+   * `sudo chmod u+rwx /etc/system.d/system/aem.system`
+7. Update 
+   * `cd /etc/system.d/system`
+   * `systemctl enable aem.system`
 
 ## Notes
 1. The example above was tested on CentOS 7
