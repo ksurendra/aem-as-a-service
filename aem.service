@@ -1,0 +1,12 @@
+[Unit]
+Description=Adobe Experience Manager
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aem start
+ExecStop=/usr/bin/aem stop
+ExecReload=/usr/bin/aem restart
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

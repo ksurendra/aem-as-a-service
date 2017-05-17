@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# /etc/rc.d/init.d/aem6
+#
+#
+# # of the file to the end of the tags section must begin with a #
+# character. After the tags section, there should be a blank line.
+# This keeps normal comments in the rest of the file from being
+# mistaken for tags, should they happen to fit the pattern.>
+#
+# chkconfig: 35 85 15
+# description: This service manages the Adobe Experience Manager java process.
+# processname: aem6
+# pidfile: /crx-quickstart/conf/cq.pid
+ 
+# Source function library.
+. /etc/rc.d/init.d/functions
+ 
+SCRIPT_NAME=`basename $0`
+AEM_ROOT=/opt/aem6
+AEM_USER=aem
+ 
+########
+BIN=${AEM_ROOT}/crx-quickstart/bin
+START=${BIN}/start
+STOP=${BIN}/stop
+STATUS="${BIN}/status"
+ 
+case "$1" in
+start)
+echo -n "Starting AEM services: "
+su - ${AEM_USER} ${START}
+touch /var/lock/subsys/$SCRIPT_NAME
+;;
+stop)
+echo -n "Shutting down AEM services: "
+su - ${AEM_USER} ${STOP}
+rm -f /var/lock/subsys/$SCRIPT_NAME
+;;
+status)
+su - ${AEM_USER} ${STATUS}
+;;
+restart)
+su - ${AEM_USER} ${STOP}
+su - ${AEM_USER} ${START}
+;;
+reload)
+;;
+*)
+echo "Usage: $SCRIPT_NAME {start|stop|status|reload}"
+exit 1
+;;
+esac
