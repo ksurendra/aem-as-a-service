@@ -3,6 +3,7 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 as an example.
 
 ## Pre-requisites
 1. AEM Installed on your server. Copy the path of the install (e.g: /mnt/crx)
+2. Start AEM (e.g `java -jar cq-quickstart-author-p4502.jar`) once. This will generate all the necessary folders, especially **/mnt/crx/crx-quickstart/bin** that is required by the scripts.
 2. Create a user who will have access to the service. (e.g: aem)
 
 ## Step-by-step guide
@@ -26,6 +27,12 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 as an example.
 7. Update 
    * `cd /etc/system.d/system`
    * `systemctl enable aem.system`
+8. You can restart the server or run the below commands to start AEM. Make sure you run **Pre-requisite Step 2** before running this command.
+
+## Commands to START, RESTART and STOP AEM
+1. Start AEM - `sudo service aem start`
+2. Restart AEM - `sudo service aem restart`
+3. Stop AEM - `sudo service aem stop`
 
 ## Notes
 1. The example above was tested on CentOS 7
