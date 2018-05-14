@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# description: This service manages the Adobe Experience Manager java process.
+# processname: aem6
+#. /lib/lsb/init-functions
+SCRIPT_NAME=`basename $0`
+AEM_ROOT=/home/aem
+AEM_USER=root
+
+########
+BIN=${AEM_ROOT}/crx-quickstart/bin
+START=${BIN}/start
+STOP=${BIN}/stop
+STATUS=${BIN}/status
+
+case "$1" in
+  start)
+   if [ -f $START ]; then
+     echo "Starting AEM Service.."
+     /bin/su -l $AEM_USER -c $START
+     RETVAL=$?
+     [ $RETVAL -eq 0 ] && touch /var/lock/subsys/${SCRIPT_NAME}
+   fi
+  ;;
+  stop)
+   if [ -f $STOP ]; then
+     echo "Stopping AEM Service.."
+     /bin/su -l $AEM_USER -c $STOP
+     RETVAL=$?
+     [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/${SCRIPT_NAME}
+   fi
+#echo "Shutting down AEM services: "
+#su – ${AEM_USER} ${STOP}
+#${STOP}
+#rm -f /var/lock/subsys/$SCRIPT_NAME
+  ;;
+  status)
+    if [ -f $STATUS ]; then
+      echo -s "Checking status of $SCRIPT_NAME: "
+      /bin/su -l $AEM_USER -c $STATUS
+      RETVAL=$?
+      [ $RETVAL -eq 0 ] && echo "$SCRIPT_NAME is running"
+    fi
+    #su – ${AEM_USER} ${STATUS}
+  ;;
+  restart)
+    /bin/su -l ${AEM_USER} -c ${STOP}
+    /bin/su -l ${AEM_USER} -c ${START}
+  ;;
+  reload)
+  ;;
+  *)
+    echo "Usage: $0 {start|stop|status|reload}"
+    RETVAL=1
+    ;;
+    #exit 1
+esac
+
+exit $RETVAL
