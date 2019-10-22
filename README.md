@@ -30,7 +30,7 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
    * `ssh user@1.1.1.1`
 6. Give permissions to the files
    * `sudo chmod u+rwx /usr/bin/aem`
-   * `sudo chmod u+rwx /etc/system.d/system/aem.system`
+   * `sudo chmod u+rwx /etc/system.d/system/aem.service`
 7. Update 
    * `cd /etc/system.d/system`
    * `sudo systemctl enable aem.system`
