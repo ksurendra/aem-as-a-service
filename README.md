@@ -46,7 +46,7 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
 ### Ubuntu
 * Start AEM - `sudo systemctl start aem`
 * Restart AEM - `sudo systemctl restart aem`
-* Stop AEM - `sudo systemctlstop aem`
+* Stop AEM - `sudo systemctl stop aem`
 * Check Status of AEM `sudo systemctl status aem`
 
 ## Test if AEM is running
