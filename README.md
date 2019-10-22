@@ -24,15 +24,15 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
 4. SCP these files to the server
    * Copy `aem` to `/usr/bin`
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/usr/bin/aem`
-   * Copy `aem.service` to `/etc/system.d/system` (if Ubuntu - '/etc/systemd/system')
+   * Copy `aem.service` to `/etc/system.d/system` (if Ubuntu - `/etc/systemd/system`)
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/etc/system.d/system/aem.system`
 5. SSH to your server
    * `ssh user@1.1.1.1`
 6. Give permissions to the files
    * `sudo chmod u+rwx /usr/bin/aem`
-   * `sudo chmod u+rwx /etc/system.d/system/aem.service` (if Ubuntu - '/etc/systemd/system/aem.service')
+   * `sudo chmod u+rwx /etc/system.d/system/aem.service` (if Ubuntu - `/etc/systemd/system/aem.service`)
 7. Update 
-   * `cd /etc/system.d/system` (if Ubuntu - '/etc/systemd/system')
+   * `cd /etc/system.d/system` (if Ubuntu - `/etc/systemd/system`)
    * `sudo systemctl enable aem.system`
 8. You can restart the server or run the below commands to start AEM. Make sure you run **Pre-requisite Step 2** before running this command.
 
