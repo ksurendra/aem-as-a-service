@@ -19,7 +19,7 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
    * aem
    * aem.service
 3. Open `aem` script file and update the below
-   * AEM_ROT (e.g: `/mnt/crx` is the root, where `/mnt/crx/crx-quickstart` is the full path)
+   * AEM_ROOT (e.g: `/mnt/crx` is the root, where `/mnt/crx/crx-quickstart` is the full path)
    * AEM_USER (e.g: `aem`) 
 4. SCP these files to the server
    * Copy `aem` to `/usr/bin/aem`
@@ -54,7 +54,9 @@ There are several ways we can test if AEM is running with the above commands
 1. Run the command `ps -ef | grep java` , you should see something like this
    * `root      12958      1  5 20:39 ?        00:02:41 java -server -Xmx1024m -XX:MaxPermSize=256M -Djava.awt.headless=true -Dsling.run.modes=author,crx3,crx3tar -Djava.locale.providers=CLDR,JRE,SPI -jar crx-quickstart/app/cq-quickstart-6.4.0-standalone-quickstart.jar start -c crx-quickstart -i launchpad -p 4502 -Dsling.properties=conf/sling.properties
 `
-2. Test AEM in browser `http://<vm-ip-address>:4502` 
+2. Test AEM in another command/terminal window using cUrl as `curl -I http://localhost:4502`
+
+3. Test AEM in browser `http://<vm-ip-address>:4502` 
 
 ## Troubleshooting
 If the command shows `active` and still AEM does not load (On a browser `http://localhost:4502`) then check the AEM logs
