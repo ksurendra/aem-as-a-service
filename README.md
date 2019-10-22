@@ -22,9 +22,9 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
    * AEM_ROOT (e.g: `/mnt/crx` is the root, where `/mnt/crx/crx-quickstart` is the full path)
    * AEM_USER (e.g: `aem`) 
 4. SCP these files to the server
-   * Copy `aem` to `/usr/bin/aem`
+   * Copy `aem` to `/usr/bin`
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/usr/bin/aem`
-   * Copy `aem.service` to `/etc/system.d/system/aem.system`
+   * Copy `aem.service` to `/etc/system.d/system`
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/etc/system.d/system/aem.system`
 5. SSH to your server
    * `ssh user@1.1.1.1`
