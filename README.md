@@ -61,9 +61,21 @@ There are several ways we can test if AEM is running with the above commands
 4. Test AEM in browser `http://<vm-ip-address>:4502` 
 
 ## Troubleshooting
-If the command shows `active` and still AEM does not load (On a browser `http://localhost:4502`) then check the AEM logs
+### Installing Oracle Java 8 Manually in Ubuntu 18x
+1. Download the `tar.gz` file "https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u 231-linux-x64.tar.gz" to your local machine. Downloading to your linux VM maybe not possible, as the above url needs a login.
+2. Copy the file to the server using SCP
+3. Make a directory: `mkdir /opt/java`
+4. Install and copy: `sudo tar -zxf jdk-8u231-linux-x64.tar.gz -C /opt/java/`
+5. Update your environment to allow Java for all users. Run this command `sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_231/bin/java 1`
+6. Add path to ".bashrc". Open to edit `sudo nano ~/.bashrc`
+7. Add these lines to the end of the file:
+`export JAVA_HOME=/opt/java/jdk1.8.0_231`
+`export PATH=${PATH}:${JAVA_HOME}/bin`
+
+### Others:
+1. If the command shows `active` and still AEM does not load (On a browser `http://localhost:4502`) then check the AEM logs
 * Path for the log file: `/<aem-folder>/crx-quickstart/logs/stdout.log` 
 
 ## Notes
-1. The example above was tested on CentOS 7 and Ubuntu 17.04
+1. The example above was tested on CentOS 7 and Ubuntu 17x, 18x
 2. AEM 6.3 version was used. Although the above process should work for AEM 6.x
