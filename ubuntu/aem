@@ -2,7 +2,7 @@
 #
 # description: This service manages the Adobe Experience Manager java process.
 # processname: aem6
-#. /lib/lsb/init-functions
+. /lib/lsb/init-functions
 SCRIPT_NAME=`basename $0`
 AEM_ROOT=/home/aem
 AEM_USER=root
