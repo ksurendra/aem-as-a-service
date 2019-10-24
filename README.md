@@ -68,13 +68,14 @@ There are several ways we can test if AEM is running with the above commands
 4. Install and copy: `sudo tar -zxf jdk-8u231-linux-x64.tar.gz -C /opt/java/`
 5. Update your environment to allow Java for all users. Run this command `sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_231/bin/java 1`
 6. Add path to ".bashrc". Open to edit `sudo nano ~/.bashrc`
-7. Add these lines to the end of the file:
-`export JAVA_HOME=/opt/java/jdk1.8.0_231`
-`export PATH=${PATH}:${JAVA_HOME}/bin`
+   - Add these lines to the end of the file:
+     
+     `export JAVA_HOME=/opt/java/jdk1.8.0_231`
+     
+     `export PATH=${PATH}:${JAVA_HOME}/bin`
 
 ### Others:
-1. If the command shows `active` and still AEM does not load (On a browser `http://localhost:4502`) then check the AEM logs
-* Path for the log file: `/<aem-folder>/crx-quickstart/logs/stdout.log` 
+1. If the command shows `active` and still AEM does not load (On a browser `http://localhost:4502`) then check the AEM logs. Path for the log file: `/<aem-folder>/crx-quickstart/logs/stdout.log` 
 
 ## Notes
 1. The example above was tested on CentOS 7 and Ubuntu 17x, 18x
