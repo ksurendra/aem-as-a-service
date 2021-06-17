@@ -3,9 +3,9 @@ Description=Adobe Experience Manager
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/aem start
-ExecStop=/usr/bin/aem stop
-ExecReload=/usr/bin/aem restart
+ExecStart=/bin/bash /usr/bin/aem start
+ExecStop=/bin/bash /usr/bin/aem stop
+ExecReload=/bin/bash /usr/bin/aem restart
 RemainAfterExit=yes
 
 [Install]

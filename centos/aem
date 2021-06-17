@@ -4,17 +4,17 @@
 # processname: aem6
 # Source function library.
 . /etc/rc.d/init.d/functions
- 
+
 SCRIPT_NAME=`basename $0`
-AEM_ROOT=/opt/aem6
+AEM_ROOT=/mnt/aem
 AEM_USER=aem
- 
+
 ########
 BIN=${AEM_ROOT}/crx-quickstart/bin
 START=${BIN}/start
 STOP=${BIN}/stop
 STATUS="${BIN}/status"
- 
+
 case "$1" in
   start)
     echo -n "Starting AEM services: "
