@@ -11,28 +11,33 @@ Details on how-to setup AEM as a Service on Linux. Used CentOS 7 and Ubuntu 17.0
 1. You will need root access
 2. Create user aem and add to sudoers group
    * `adduser aem`   
-   * `usermod -aG sudo aem`   
+   * `usermod -aG wheel aem`   
    * Test the user 
      * `su - aem`   
      * `sudo ls -la /root` [This is accessible by root only]
+   * If setting up publisher, add the following lines to .bash_profile/.profile:
+     * export CQ_RUNMODE=publish
+     * export CQ_PORT=4503
+   * If setting up multiple environments CQ_RUNMODE can be modified to include them:
+     * export CQ_RUNMODE=publish,dev
 2. Create these 2 files (Get the contents of the files based on the OS. Under /centos or /ubutnu in this project)
    * aem
    * aem.service
 3. Open `aem` script file and update the below
-   * AEM_ROOT (e.g: `/mnt/crx` is the root, where `/mnt/crx/crx-quickstart` is the full path)
+   * AEM_ROOT (e.g: `/mnt/aem` is the root, where `/mnt/aem/crx-quickstart` is the full path)
    * AEM_USER (e.g: `aem`) 
 4. SCP these files to the server
    * Copy `aem` to `/usr/bin`
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/usr/bin/aem`
-   * Copy `aem.service` to `/etc/system.d/system` (if Ubuntu - `/etc/systemd/system`)
+   * Copy `aem.service` to `/etc/systemd/system` (if Ubuntu - `/etc/systemd/system`)
      * Example: From terminal on your desktop `$ scp <filename> user@1.1.1.1:/etc/system.d/system/aem.system`
 5. SSH to your server
    * `ssh user@1.1.1.1`
 6. Give permissions to the files
    * `sudo chmod u+rwx /usr/bin/aem`
-   * `sudo chmod u+rw /etc/system.d/system/aem.service` (if Ubuntu - `/etc/systemd/system/aem.service`)
+   * `sudo chmod u+rw /etc/systemd/system/aem.service`
 7. Update 
-   * `cd /etc/system.d/system` (if Ubuntu - `/etc/systemd/system`)
+   * `cd /etc/systemd/system`
    * `sudo systemctl enable aem.service`
 8. You can restart the server or run the below commands to start AEM. Make sure you run **Pre-requisite Step 2** before running this command.
 
